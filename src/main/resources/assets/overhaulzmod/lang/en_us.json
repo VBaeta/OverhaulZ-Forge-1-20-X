@@ -6,6 +6,7 @@
   "item.overhaulzmod.box_container": "Box",
 
   "creativetab.materials_tab": "OverhaulZ Materials",
+  "creativetab.foods_tab": "OverhaulZ Foods",
 
   "tooltip.boxcontainer.empty": "Just an empty box...",
   "tooltip.boxcontainer.capacity": "%d/%d",

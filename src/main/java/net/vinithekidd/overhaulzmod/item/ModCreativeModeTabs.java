@@ -1,5 +1,6 @@
 package net.vinithekidd.overhaulzmod.item;
 
+import net.minecraft.world.item.CreativeModeTabs;
 import net.vinithekidd.overhaulzmod.OverhaulZ;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
@@ -24,6 +25,16 @@ public class ModCreativeModeTabs {
                         pOutput.accept(ModItems.BOX_CONTAINER.get());
 
                     })
+                    .build());
+
+    public static final RegistryObject<CreativeModeTab> FOODS_TAB = CREATIVE_MODE_TABS.register("foods_tab",
+            () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModItems.TOMATO.get()))
+                    .title(Component.translatable("creativetab.foods_tab"))
+                    .displayItems((pParameters, pOutput) -> {
+                        pOutput.accept(ModItems.TOMATO.get());
+
+                    })
+                    .withTabsBefore(CreativeModeTabs.SPAWN_EGGS)
                     .build());
 
 

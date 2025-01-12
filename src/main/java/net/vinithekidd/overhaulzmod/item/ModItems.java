@@ -20,6 +20,9 @@ public class ModItems {
     public static final RegistryObject<Item> NAILS = ITEMS.register("nails",
             () -> new Item(new Item.Properties()));
 
+    public static final RegistryObject<Item> TOMATO = ITEMS.register("tomato",
+            () -> new Item(new Item.Properties().food(ModFoods.TOMATO)));
+
 
     public static final RegistryObject<Item> BOX_CONTAINER = ITEMS.register("box_container",
             () -> new BoxContainerItem(
