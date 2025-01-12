@@ -1,0 +1,12 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "overhaulzmod:item/box_container"
+  },
+  "overrides": [
+    {
+      "predicate": { "stored_item": 1 },
+      "model": "overhaulzmod:item/box_of_nails"
+    }
+  ]
+}

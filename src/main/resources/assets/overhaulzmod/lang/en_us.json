@@ -2,5 +2,12 @@
   "item.overhaulzmod.aluminum_ingot": "Aluminum Ingot",
   "block.overhaulzmod.aluminum_block": "Aluminum Block",
 
-  "creativetab.materials_tab": "OverhaulZ Materials"
+  "item.overhaulzmod.nails": "Nails",
+  "item.overhaulzmod.box_container": "Box",
+
+  "creativetab.materials_tab": "OverhaulZ Materials",
+
+  "tooltip.boxcontainer.empty": "Just an empty box...",
+  "tooltip.boxcontainer.capacity": "%d/%d",
+  "tooltip.boxcontainer.stored_item": "%s"
 }
