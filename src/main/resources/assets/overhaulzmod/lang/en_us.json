@@ -1,7 +1,7 @@
 {
-  "item.overhaulzmod.aluminum_ingot": "Aluminum Ingot",
   "block.overhaulzmod.aluminum_block": "Aluminum Block",
 
+  "item.overhaulzmod.aluminum_ingot": "Aluminum Ingot",
   "item.overhaulzmod.nails": "Nails",
   "item.overhaulzmod.screws": "Screws",
   "item.overhaulzmod.box_container": "Box",
@@ -10,9 +10,14 @@
   "item.overhaulzmod.tomato_seeds": "Tomato Seeds",
   "item.overhaulzmod.corn": "Corn",
   "item.overhaulzmod.corn_seeds": "Corn Seeds",
+  "item.overhaulzmod.lost_survivor_spawn_egg": "Lost Survivor Spawn Egg",
+
+  "entity.overhaulzmod.lost_survivor": "Lost Survivor",
 
   "creativetab.materials_tab": "OverhaulZ Materials",
   "creativetab.foods_tab": "OverhaulZ Foods",
+  "creativetab.entities_tab": "OverhaulZ Entities",
+
 
   "tooltip.boxcontainer.empty": "Just an empty box...",
   "tooltip.boxcontainer.capacity": "%d/%d",

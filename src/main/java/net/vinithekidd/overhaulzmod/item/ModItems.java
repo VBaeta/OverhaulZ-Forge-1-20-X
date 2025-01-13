@@ -3,18 +3,23 @@ package net.vinithekidd.overhaulzmod.item;
 
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemNameBlockItem;
+import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.vinithekidd.overhaulzmod.OverhaulZ;
 import net.vinithekidd.overhaulzmod.block.ModBlocks;
+import net.vinithekidd.overhaulzmod.entity.ModEntities;
 import net.vinithekidd.overhaulzmod.item.custom.ContainerItem;
 import net.vinithekidd.overhaulzmod.util.ModTags;
 
 public class ModItems {
     public static final DeferredRegister<Item> ITEMS =
             DeferredRegister.create(ForgeRegistries.ITEMS, OverhaulZ.MOD_ID);
+
+    public static final RegistryObject<Item> LOST_SURVIVOR_SPAWN_EGG = ITEMS.register("lost_survivor_spawn_egg",
+            () -> new ForgeSpawnEggItem(ModEntities.LOST_SURVIVOR, 0x9a927f,0x354654, new Item.Properties()));
 
     public static final RegistryObject<Item> ALUMINUM_INGOT = ITEMS.register("aluminum_ingot",
             () -> new Item(new Item.Properties()));

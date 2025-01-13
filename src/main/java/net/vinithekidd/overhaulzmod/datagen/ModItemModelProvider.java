@@ -36,6 +36,9 @@ public class ModItemModelProvider extends ItemModelProvider {
                 2, "box_of_screws"
         ));
 
+
+        withExistingParent(ModItems.LOST_SURVIVOR_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
+
     }
 
     private ItemModelBuilder simpleItem(RegistryObject<Item> item) {

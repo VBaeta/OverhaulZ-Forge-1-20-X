@@ -42,6 +42,15 @@ public class ModCreativeModeTabs {
                     .withTabsBefore(CreativeModeTabs.SPAWN_EGGS)
                     .build());
 
+    public static final RegistryObject<CreativeModeTab> ENTITIES_TAB = CREATIVE_MODE_TABS.register("entities_tab",
+            () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModItems.LOST_SURVIVOR_SPAWN_EGG.get()))
+                    .title(Component.translatable("creativetab.entities_tab"))
+                    .displayItems((pParameters, pOutput) -> {
+                        pOutput.accept(ModItems.LOST_SURVIVOR_SPAWN_EGG.get());
+                    })
+
+                    .build());
+
 
     public static void register(IEventBus eventBus) {
         CREATIVE_MODE_TABS.register(eventBus);

@@ -1,10 +1,11 @@
-// 1.20.1	2025-01-12T23:02:02.660185	Item Models: overhaulzmod
+// 1.20.1	2025-01-13T09:47:05.696845	Item Models: overhaulzmod
 28214e90485c6fe7514b21fc51d5338deba6f0fe assets/overhaulzmod/models/item/aluminum_ingot.json
-b6465a9f5cf63d8a1c5f62b9733b37012a6850f0 assets/overhaulzmod/models/item/box_container.json
+d46e13367232641b5ffefc6caaabe43e82b76f8f assets/overhaulzmod/models/item/box_container.json
 e501fa1d327e7d9ce54173259c2b9d0befd1e0fe assets/overhaulzmod/models/item/box_of_nails.json
 71a123881551f41304be1364ee86d57a00469cf9 assets/overhaulzmod/models/item/box_of_screws.json
 9ca83e075d11d5bc9fb1f05be28ec24c33f4aaf1 assets/overhaulzmod/models/item/corn.json
 b682c40e6a50006a45f28537ab67f720a5781601 assets/overhaulzmod/models/item/corn_seeds.json
+63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/overhaulzmod/models/item/lost_survivor_spawn_egg.json
 ea9ed5106617aa04e0dd1ea4a94f1da9bdd41de0 assets/overhaulzmod/models/item/nails.json
 fb76b8864f34031e8328649414c68f28766a99a2 assets/overhaulzmod/models/item/rusty_can.json
 a74ffbde7d35f8614371542fe9b83674f06a50e1 assets/overhaulzmod/models/item/screws.json
