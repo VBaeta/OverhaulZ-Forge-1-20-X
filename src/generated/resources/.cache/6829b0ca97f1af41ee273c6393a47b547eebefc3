@@ -1,0 +1,4 @@
+// 1.20.1	2025-01-12T21:24:19.2919859	Global Loot Modifiers : overhaulzmod
+b4b45620d7578f56c615c6f1c567c6f8bf3c232f data/forge/loot_modifiers/global_loot_modifiers.json
+9b2f59c8a12e12b4d69f526c7aa5fdd6871275db data/overhaulzmod/loot_modifiers/rusty_can_from_grass.json
+db491cad91fbcb326e5562b502fbed472c8d94cf data/overhaulzmod/loot_modifiers/rusty_can_from_zombie.json

@@ -17,6 +17,7 @@ public class OverhaulZClient {
                 String storedItem = stack.getTag().getString("StoredItem");
                 return switch (storedItem) {
                     case "overhaulzmod:nails" -> 1;
+                    case "overhaulzmod:screws" -> 2;
                     default -> 0;
                 };
             }

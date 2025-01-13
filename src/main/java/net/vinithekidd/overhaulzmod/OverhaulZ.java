@@ -13,6 +13,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.vinithekidd.overhaulzmod.block.ModBlocks;
+import net.vinithekidd.overhaulzmod.datagen.loot.ModLootModifiers;
 import net.vinithekidd.overhaulzmod.item.ModCreativeModeTabs;
 import net.vinithekidd.overhaulzmod.item.ModItems;
 import org.slf4j.Logger;
@@ -28,6 +29,8 @@ public class OverhaulZ {
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
         ModCreativeModeTabs.register(modEventBus);
+        ModLootModifiers.register(modEventBus);
+
 
 
 

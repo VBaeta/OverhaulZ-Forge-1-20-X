@@ -22,6 +22,7 @@ public class ModCreativeModeTabs {
                         pOutput.accept(ModItems.ALUMINUM_INGOT.get());
                         pOutput.accept(ModBlocks.ALUMINUM_BLOCK.get());
                         pOutput.accept(ModItems.NAILS.get());
+                        pOutput.accept(ModItems.SCREWS.get());
                         pOutput.accept(ModItems.BOX_CONTAINER.get());
 
                     })
