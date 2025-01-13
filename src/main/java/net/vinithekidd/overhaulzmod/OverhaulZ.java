@@ -19,6 +19,7 @@ import net.vinithekidd.overhaulzmod.entity.ModEntities;
 import net.vinithekidd.overhaulzmod.entity.client.LostSurvivorRenderer;
 import net.vinithekidd.overhaulzmod.item.ModCreativeModeTabs;
 import net.vinithekidd.overhaulzmod.item.ModItems;
+import net.vinithekidd.overhaulzmod.sound.ModSounds;
 import org.slf4j.Logger;
 
 @Mod(OverhaulZ.MOD_ID)
@@ -34,6 +35,7 @@ public class OverhaulZ {
         ModCreativeModeTabs.register(modEventBus);
         ModLootModifiers.register(modEventBus);
         ModEntities.register(modEventBus);
+        ModSounds.register(modEventBus);
 
 
 

@@ -1,0 +1,30 @@
+{
+  "lost_survivor_ambient": {
+    "subtitles": "sounds.overhaulzmod.lost_survivor_ambient",
+    "sounds": [
+      "overhaulzmod:lost_survivor_ambient_01",
+      "overhaulzmod:lost_survivor_ambient_02",
+      "overhaulzmod:lost_survivor_ambient_03",
+      "overhaulzmod:lost_survivor_ambient_04",
+      "overhaulzmod:lost_survivor_ambient_05"
+    ]
+  },
+  "lost_survivor_death": {
+    "subtitles": "sounds.overhaulzmod.lost_survivor_death",
+    "sounds": [
+      "overhaulzmod:lost_survivor_death_01",
+      "overhaulzmod:lost_survivor_death_02",
+      "overhaulzmod:lost_survivor_death_03"
+    ]
+  },
+  "lost_survivor_hurt": {
+    "subtitles": "sounds.overhaulzmod.lost_survivor_hurt",
+    "sounds": [
+      "overhaulzmod:lost_survivor_hurt_01",
+      "overhaulzmod:lost_survivor_hurt_02",
+      "overhaulzmod:lost_survivor_hurt_03",
+      "overhaulzmod:lost_survivor_hurt_04",
+      "overhaulzmod:lost_survivor_hurt_05"
+    ]
+  }
+}

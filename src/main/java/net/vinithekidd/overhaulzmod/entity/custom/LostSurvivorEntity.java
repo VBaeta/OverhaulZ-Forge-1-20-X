@@ -21,6 +21,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.vinithekidd.overhaulzmod.entity.ModEntities;
 import net.vinithekidd.overhaulzmod.entity.ai.LostSurvivorAttackGoal;
+import net.vinithekidd.overhaulzmod.sound.ModSounds;
 import org.jetbrains.annotations.Nullable;
 
 public class LostSurvivorEntity extends Animal {
@@ -127,21 +128,20 @@ public class LostSurvivorEntity extends Animal {
         return pStack.is(Items.COOKED_CHICKEN);
     }
 
+    @Nullable
     @Override
-    protected @Nullable SoundEvent getAmbientSound() {
-        return SoundEvents.VILLAGER_AMBIENT;
+    protected SoundEvent getAmbientSound() {
+        return ModSounds.LOST_SURVIVOR_AMBIENT.get();
     }
 
     @Override
     protected @Nullable SoundEvent getHurtSound(DamageSource pDamageSource) {
-        return SoundEvents.VILLAGER_HURT;
+        return ModSounds.LOST_SURVIVOR_HURT.get();
     }
 
     @Override
     protected @Nullable SoundEvent getDeathSound() {
-        return SoundEvents.VILLAGER_DEATH;
+        return ModSounds.LOST_SURVIVOR_DEATH.get();
     }
-
-
 
 }
