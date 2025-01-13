@@ -24,6 +24,9 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(ModItems.SCREWS);
         simpleItem(ModItems.RUSTY_CAN);
         simpleItem(ModItems.TOMATO);
+        simpleItem(ModItems.TOMATO_SEEDS);
+        simpleItem(ModItems.CORN);
+        simpleItem(ModItems.CORN_SEEDS);
 
         containerVariationItem("box_of_nails");
         containerVariationItem("box_of_screws");

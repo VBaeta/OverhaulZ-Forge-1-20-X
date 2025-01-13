@@ -11,4 +11,11 @@ public class ModFoods {
 
 
             .build();
+
+    public static final FoodProperties CORN = new FoodProperties.Builder()
+            .nutrition(2)
+            .saturationMod(1f)
+
+
+            .build();
 }

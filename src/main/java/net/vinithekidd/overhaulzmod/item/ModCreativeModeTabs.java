@@ -21,6 +21,7 @@ public class ModCreativeModeTabs {
                     .displayItems((pParameters, pOutput) -> {
                         pOutput.accept(ModItems.ALUMINUM_INGOT.get());
                         pOutput.accept(ModBlocks.ALUMINUM_BLOCK.get());
+                        pOutput.accept(ModItems.RUSTY_CAN.get());
                         pOutput.accept(ModItems.NAILS.get());
                         pOutput.accept(ModItems.SCREWS.get());
                         pOutput.accept(ModItems.BOX_CONTAINER.get());
@@ -33,6 +34,9 @@ public class ModCreativeModeTabs {
                     .title(Component.translatable("creativetab.foods_tab"))
                     .displayItems((pParameters, pOutput) -> {
                         pOutput.accept(ModItems.TOMATO.get());
+                        pOutput.accept(ModItems.TOMATO_SEEDS.get());
+                        pOutput.accept(ModItems.CORN.get());
+                        pOutput.accept(ModItems.CORN_SEEDS.get());
 
                     })
                     .withTabsBefore(CreativeModeTabs.SPAWN_EGGS)
