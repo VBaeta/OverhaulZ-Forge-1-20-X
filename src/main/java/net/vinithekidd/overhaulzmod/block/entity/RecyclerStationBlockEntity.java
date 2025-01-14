@@ -22,16 +22,17 @@ import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import net.vinithekidd.overhaulzmod.item.ModItems;
+import net.vinithekidd.overhaulzmod.recipe.RecyclerStationRecipe;
 import net.vinithekidd.overhaulzmod.screen.RecyclerStationMenu;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public class RecyclerStationBlockEntity extends BlockEntity implements MenuProvider {
+import java.util.Optional;
 
+public class RecyclerStationBlockEntity extends BlockEntity implements MenuProvider {
     private final ItemStackHandler itemHandler = new ItemStackHandler(2);
 
     private static final int INPUT_SLOT = 0;
-
     private static final int OUTPUT_SLOT = 1;
 
     private LazyOptional<IItemHandler> lazyItemHandler = LazyOptional.empty();
@@ -40,13 +41,9 @@ public class RecyclerStationBlockEntity extends BlockEntity implements MenuProvi
     private int progress = 0;
     private int maxProgress = 78;
 
-
-
-
     public RecyclerStationBlockEntity(BlockPos pPos, BlockState pBlockState) {
         super(ModBlockEntities.RECYCLER_STATION_BE.get(), pPos, pBlockState);
         this.data = new ContainerData() {
-
             @Override
             public int get(int pIndex) {
                 return switch (pIndex) {
@@ -145,7 +142,9 @@ public class RecyclerStationBlockEntity extends BlockEntity implements MenuProvi
     }
 
     private void craftItem() {
-        ItemStack result = new ItemStack(ModItems.ALUMINUM_INGOT.get(), 1);
+        Optional<RecyclerStationRecipe> recipe = getCurrentRecipe();
+        ItemStack result = recipe.get().getResultItem(null);
+
         this.itemHandler.extractItem(INPUT_SLOT, 1, false);
 
         this.itemHandler.setStackInSlot(OUTPUT_SLOT, new ItemStack(result.getItem(),
@@ -153,10 +152,23 @@ public class RecyclerStationBlockEntity extends BlockEntity implements MenuProvi
     }
 
     private boolean hasRecipe() {
-        boolean hasCraftingItem = this.itemHandler.getStackInSlot(INPUT_SLOT).getItem() == ModItems.RUSTY_CAN.get();
-        ItemStack result = new ItemStack(ModItems.ALUMINUM_INGOT.get());
+        Optional<RecyclerStationRecipe> recipe = getCurrentRecipe();
 
-        return hasCraftingItem && canInsertAmountIntoOutputSlot(result.getCount()) && canInsertItemIntoOutputSlot(result.getItem());
+        if(recipe.isEmpty()) {
+            return false;
+        }
+        ItemStack result = recipe.get().getResultItem(getLevel().registryAccess());
+
+        return canInsertAmountIntoOutputSlot(result.getCount()) && canInsertItemIntoOutputSlot(result.getItem());
+    }
+
+    private Optional<RecyclerStationRecipe> getCurrentRecipe() {
+        SimpleContainer inventory = new SimpleContainer(this.itemHandler.getSlots());
+        for(int i = 0; i < itemHandler.getSlots(); i++) {
+            inventory.setItem(i, this.itemHandler.getStackInSlot(i));
+        }
+
+        return this.level.getRecipeManager().getRecipeFor(RecyclerStationRecipe.Type.INSTANCE, inventory, level);
     }
 
     private boolean canInsertItemIntoOutputSlot(Item item) {
