@@ -24,6 +24,39 @@ public class ModItems {
     public static final RegistryObject<Item> ALUMINUM_INGOT = ITEMS.register("aluminum_ingot",
             () -> new Item(new Item.Properties()));
 
+    public static final RegistryObject<Item> ALUMINUM_FOIL = ITEMS.register("aluminum_foil",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> ALUMINUM_GEAR = ITEMS.register("aluminum_gear",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> ALUMINUM_SCRAPS = ITEMS.register("aluminum_scraps",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> ALUMINUM_TUBE = ITEMS.register("aluminum_tube",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> ALUMINUM_WIRING = ITEMS.register("aluminum_wiring",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> BIKE_PARTS = ITEMS.register("bike_parts",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> PLIERS = ITEMS.register("pliers",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> TWEEZERS = ITEMS.register("tweezers",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> RULER = ITEMS.register("ruler",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> STAPLER = ITEMS.register("stapler",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> CAN_OPENER = ITEMS.register("can_opener",
+            () -> new Item(new Item.Properties()));
+
     public static final RegistryObject<Item> NAILS = ITEMS.register("nails",
             () -> new Item(new Item.Properties()));
 

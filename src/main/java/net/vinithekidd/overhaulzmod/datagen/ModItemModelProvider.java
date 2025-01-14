@@ -20,6 +20,17 @@ public class ModItemModelProvider extends ItemModelProvider {
     @Override
     protected void registerModels() {
         simpleItem(ModItems.ALUMINUM_INGOT);
+        simpleItem(ModItems.ALUMINUM_FOIL);
+        simpleItem(ModItems.ALUMINUM_GEAR);
+        simpleItem(ModItems.ALUMINUM_SCRAPS);
+        simpleItem(ModItems.ALUMINUM_TUBE);
+        simpleItem(ModItems.ALUMINUM_WIRING);
+        simpleItem(ModItems.BIKE_PARTS);
+        simpleItem(ModItems.PLIERS);
+        simpleItem(ModItems.TWEEZERS);
+        simpleItem(ModItems.RULER);
+        simpleItem(ModItems.STAPLER);
+        simpleItem(ModItems.CAN_OPENER);
         simpleItem(ModItems.NAILS);
         simpleItem(ModItems.SCREWS);
         simpleItem(ModItems.RUSTY_CAN);

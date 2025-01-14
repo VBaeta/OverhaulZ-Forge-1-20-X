@@ -3,10 +3,23 @@
   "block.overhaulzmod.recycler_station": "Recycler Station",
 
   "item.overhaulzmod.aluminum_ingot": "Aluminum Ingot",
+  "item.overhaulzmod.aluminum_foil": "Aluminum Foil",
+  "item.overhaulzmod.aluminum_gear": "Aluminum Gear",
+  "item.overhaulzmod.aluminum_scraps": "Aluminum Scraps",
+  "item.overhaulzmod.aluminum_tube": "Aluminum Tube",
+  "item.overhaulzmod.aluminum_wiring": "Aluminum Wiring",
+  "item.overhaulzmod.bike_parts": "Bike Parts",
+  "item.overhaulzmod.pliers": "Pliers",
+  "item.overhaulzmod.tweezers": "Tweezers",
+  "item.overhaulzmod.ruler": "Ruler",
+  "item.overhaulzmod.stapler": "Stapler",
+  "item.overhaulzmod.can_opener": "Can Opener",
+  "item.overhaulzmod.rusty_can": "Rusty Can",
+
   "item.overhaulzmod.nails": "Nails",
   "item.overhaulzmod.screws": "Screws",
   "item.overhaulzmod.box_container": "Box",
-  "item.overhaulzmod.rusty_can": "Rusty Can",
+
   "item.overhaulzmod.tomato": "Tomato",
   "item.overhaulzmod.tomato_seeds": "Tomato Seeds",
   "item.overhaulzmod.corn": "Corn",
@@ -15,10 +28,10 @@
 
   "entity.overhaulzmod.lost_survivor": "Lost Survivor",
 
-  "creativetab.materials_tab": "OverhaulZ Materials",
-  "creativetab.foods_tab": "OverhaulZ Foods",
-  "creativetab.entities_tab": "OverhaulZ Entities",
-  "creativetab.stations_tab": "OverhaulZ Stations",
+  "creativetab.materials_tab": "OverhaulZ - Materials",
+  "creativetab.foods_tab": "OverhaulZ - Foods",
+  "creativetab.entities_tab": "OverhaulZ - Entities",
+  "creativetab.stations_tab": "OverhaulZ - Stations",
 
 
   "tooltip.boxcontainer.empty": "Just an empty box...",

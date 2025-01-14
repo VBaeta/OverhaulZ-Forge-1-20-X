@@ -19,9 +19,24 @@ public class ModCreativeModeTabs {
             () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModItems.ALUMINUM_INGOT.get()))
                     .title(Component.translatable("creativetab.materials_tab"))
                     .displayItems((pParameters, pOutput) -> {
-                        pOutput.accept(ModItems.ALUMINUM_INGOT.get());
+
+                        //Aluminum Items
                         pOutput.accept(ModBlocks.ALUMINUM_BLOCK.get());
+                        pOutput.accept(ModItems.ALUMINUM_INGOT.get());
+                        pOutput.accept(ModItems.ALUMINUM_FOIL.get());
+                        pOutput.accept(ModItems.ALUMINUM_GEAR.get());
+                        pOutput.accept(ModItems.ALUMINUM_SCRAPS.get());
+                        pOutput.accept(ModItems.ALUMINUM_TUBE.get());
+                        pOutput.accept(ModItems.ALUMINUM_WIRING.get());
+                        pOutput.accept(ModItems.BIKE_PARTS.get());
+                        pOutput.accept(ModItems.PLIERS.get());
+                        pOutput.accept(ModItems.TWEEZERS.get());
+                        pOutput.accept(ModItems.RULER.get());
+                        pOutput.accept(ModItems.STAPLER.get());
+                        pOutput.accept(ModItems.CAN_OPENER.get());
                         pOutput.accept(ModItems.RUSTY_CAN.get());
+
+                        //Materials and Containers
                         pOutput.accept(ModItems.NAILS.get());
                         pOutput.accept(ModItems.SCREWS.get());
                         pOutput.accept(ModItems.BOX_CONTAINER.get());

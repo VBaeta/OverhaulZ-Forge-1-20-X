@@ -1,0 +1,40 @@
+{
+  "block.overhaulzmod.aluminum_block": "Bloco de Alumínio",
+  "block.overhaulzmod.recycler_station": "Estação de Reciclagem",
+
+  "item.overhaulzmod.aluminum_ingot": "Barra de Alumínio",
+  "item.overhaulzmod.aluminum_foil": "Papel Alumínio",
+  "item.overhaulzmod.aluminum_gear": "Engrenagem de Alumínio",
+  "item.overhaulzmod.aluminum_scraps": "Restos de Alumínio",
+  "item.overhaulzmod.aluminum_tube": "Tubo de Alumínio",
+  "item.overhaulzmod.aluminum_wiring": "Fios de Alumínio",
+  "item.overhaulzmod.bike_parts": "Partes de Bicicleta",
+  "item.overhaulzmod.rusty_can": "Latinha Enferrujada",
+  "item.overhaulzmod.pliers": "Alicate",
+  "item.overhaulzmod.tweezers": "Pinça",
+  "item.overhaulzmod.ruler": "Régua",
+  "item.overhaulzmod.stapler": "Grampeador",
+  "item.overhaulzmod.can_opener": "Abridor de Lata",
+
+  "item.overhaulzmod.nails": "Pregos",
+  "item.overhaulzmod.screws": "Parafusos",
+  "item.overhaulzmod.box_container": "Caixa",
+
+  "item.overhaulzmod.tomato": "Tomate",
+  "item.overhaulzmod.tomato_seeds": "Sementes de Tomate",
+  "item.overhaulzmod.corn": "Milho",
+  "item.overhaulzmod.corn_seeds": "Sementes de Milho",
+  "item.overhaulzmod.lost_survivor_spawn_egg": "Ovo de Spawn de Sobrevivente Perdido",
+
+  "entity.overhaulzmod.lost_survivor": "Sobrevivente Perdido",
+
+  "creativetab.materials_tab": "OverhaulZ - Materiais",
+  "creativetab.foods_tab": "OverhaulZ - Comidas",
+  "creativetab.entities_tab": "OverhaulZ - Entidades",
+  "creativetab.stations_tab": "OverhaulZ - Estações",
+
+
+  "tooltip.boxcontainer.empty": "Apenas uma caixa vazia...",
+  "tooltip.boxcontainer.capacity": "%d/%d",
+  "tooltip.boxcontainer.stored_item": "%s"
+}
