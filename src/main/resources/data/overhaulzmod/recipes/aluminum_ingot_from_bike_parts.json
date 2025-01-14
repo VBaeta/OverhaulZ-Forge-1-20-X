@@ -1,0 +1,12 @@
+{
+  "type": "overhaulzmod:recycler_station",
+  "ingredients": [
+    {
+      "item": "overhaulzmod:bike_parts"
+    }
+  ],
+  "output": {
+    "count": 4,
+    "item": "overhaulzmod:aluminum_ingot"
+  }
+}

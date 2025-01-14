@@ -5,6 +5,8 @@ import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.vinithekidd.overhaulzmod.OverhaulZ;
+import net.vinithekidd.overhaulzmod.block.entity.ModBlockEntities;
+import net.vinithekidd.overhaulzmod.block.entity.renderer.RecyclerStationBlockEntityRenderer;
 import net.vinithekidd.overhaulzmod.entity.client.LostSurvivorModel;
 import net.vinithekidd.overhaulzmod.entity.client.ModModelLayers;
 
@@ -13,5 +15,10 @@ public class ModEventBusClientEvents {
     @SubscribeEvent
     public static void registerLayer(EntityRenderersEvent.RegisterLayerDefinitions event) {
         event.registerLayerDefinition(ModModelLayers.LOST_SURVIVOR_LAYER, LostSurvivorModel::createBodyLayer);
+    }
+
+    @SubscribeEvent
+    public static void registerBER(EntityRenderersEvent.RegisterRenderers event) {
+        event.registerBlockEntityRenderer(ModBlockEntities.RECYCLER_STATION_BE.get(), RecyclerStationBlockEntityRenderer::new);
     }
 }

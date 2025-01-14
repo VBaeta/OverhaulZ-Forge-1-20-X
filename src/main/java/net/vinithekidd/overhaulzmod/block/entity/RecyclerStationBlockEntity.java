@@ -4,6 +4,9 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.protocol.Packet;
+import net.minecraft.network.protocol.game.ClientGamePacketListener;
+import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.world.Containers;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.SimpleContainer;
@@ -21,7 +24,6 @@ import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
-import net.vinithekidd.overhaulzmod.item.ModItems;
 import net.vinithekidd.overhaulzmod.recipe.RecyclerStationRecipe;
 import net.vinithekidd.overhaulzmod.screen.RecyclerStationMenu;
 import org.jetbrains.annotations.NotNull;
@@ -30,7 +32,29 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Optional;
 
 public class RecyclerStationBlockEntity extends BlockEntity implements MenuProvider {
-    private final ItemStackHandler itemHandler = new ItemStackHandler(2);
+        private final ItemStackHandler itemHandler = new ItemStackHandler(2){
+        @Override
+        protected void onContentsChanged(int slot) {
+            setChanged();
+            if(!level.isClientSide()) {
+                level.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), 3);
+            }
+        }
+
+        @Override
+        public boolean isItemValid(int slot, @NotNull ItemStack stack) {
+                // Verifica se o item pode ser colocado no INPUT_SLOT
+            if (slot == INPUT_SLOT) {
+                return hasValidRecipeFor(stack); // Permite apenas itens com receita
+            }
+
+            if (slot == OUTPUT_SLOT) {
+                return false; // Não permite colocar itens no OUTPUT_SLOT
+                }
+
+            return super.isItemValid(slot, stack);
+        }
+    };
 
     private static final int INPUT_SLOT = 0;
     private static final int OUTPUT_SLOT = 1;
@@ -67,6 +91,15 @@ public class RecyclerStationBlockEntity extends BlockEntity implements MenuProvi
             }
         };
     }
+
+    public ItemStack getRenderStack() {
+        if(itemHandler.getStackInSlot(OUTPUT_SLOT).isEmpty()) {
+            return itemHandler.getStackInSlot(INPUT_SLOT);
+        } else {
+            return itemHandler.getStackInSlot(OUTPUT_SLOT);
+        }
+    }
+
 
     @Override
     public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {
@@ -135,6 +168,7 @@ public class RecyclerStationBlockEntity extends BlockEntity implements MenuProvi
         } else {
             resetProgress();
         }
+
     }
 
     private void resetProgress() {
@@ -186,4 +220,28 @@ public class RecyclerStationBlockEntity extends BlockEntity implements MenuProvi
     private void increaseCraftingProgress() {
         progress++;
     }
+
+    @Override
+    public @Nullable Packet<ClientGamePacketListener> getUpdatePacket() {
+        return ClientboundBlockEntityDataPacket.create(this);
+    }
+
+    @Override
+    public CompoundTag getUpdateTag() {
+        return saveWithoutMetadata();
+    }
+
+    private boolean hasValidRecipeFor(ItemStack stack) {
+        if (level == null || stack.isEmpty()) return false; // Verifica se o nível existe e se o item não está vazio
+
+        // Obtém todas as receitas cadastradas para o tipo RecyclerStationRecipe
+        return level.getRecipeManager()
+                .getAllRecipesFor(RecyclerStationRecipe.Type.INSTANCE).stream()
+                .anyMatch(recipe ->
+                        !recipe.getIngredients().isEmpty() && // Certifica-se de que há ingredientes na receita
+                                recipe.getIngredients().get(0).test(stack) // Testa se o item corresponde ao ingrediente
+                );
+    }
+
+
 }

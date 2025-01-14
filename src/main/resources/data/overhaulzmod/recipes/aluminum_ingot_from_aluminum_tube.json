@@ -1,0 +1,12 @@
+{
+  "type": "overhaulzmod:recycler_station",
+  "ingredients": [
+    {
+      "item": "overhaulzmod:aluminum_tube"
+    }
+  ],
+  "output": {
+    "count": 3,
+    "item": "overhaulzmod:aluminum_ingot"
+  }
+}

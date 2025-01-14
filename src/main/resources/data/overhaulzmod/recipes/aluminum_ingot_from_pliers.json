@@ -1,0 +1,12 @@
+{
+  "type": "overhaulzmod:recycler_station",
+  "ingredients": [
+    {
+      "item": "overhaulzmod:pliers"
+    }
+  ],
+  "output": {
+    "count": 2,
+    "item": "overhaulzmod:aluminum_ingot"
+  }
+}

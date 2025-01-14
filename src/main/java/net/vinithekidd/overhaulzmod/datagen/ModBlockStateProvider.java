@@ -1,5 +1,6 @@
 package net.vinithekidd.overhaulzmod.datagen;
 
+import net.minecraft.core.Direction;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
@@ -13,6 +14,7 @@ import net.minecraftforge.registries.RegistryObject;
 import net.vinithekidd.overhaulzmod.OverhaulZ;
 import net.vinithekidd.overhaulzmod.block.ModBlocks;
 import net.vinithekidd.overhaulzmod.block.custom.CornCropBlock;
+import net.vinithekidd.overhaulzmod.block.custom.RecyclerStationBlock;
 import net.vinithekidd.overhaulzmod.block.custom.TomatoCropBlock;
 
 import java.util.function.Function;
@@ -22,6 +24,27 @@ public class ModBlockStateProvider extends BlockStateProvider {
         super(output, OverhaulZ.MOD_ID, exFileHelper);
     }
 
+    public void directionalBlock(Block block, ModelFile model) {
+        getVariantBuilder(block).forAllStates(state -> {
+            Direction facing = state.getValue(RecyclerStationBlock.FACING);
+            int rotationY = getYRotationFromDirection(facing); // Calcula somente valores para Y
+
+            return new ConfiguredModel[]{
+                    new ConfiguredModel(model, 0, rotationY, false) // Aplica somente rotação no eixo Y
+            };
+        });
+    }
+
+    private int getYRotationFromDirection(Direction direction) {
+        return switch (direction) {
+            case NORTH -> 0;
+            case EAST -> 90;
+            case SOUTH -> 180;
+            case WEST -> 270;
+            default -> 0; // Qualquer direção inesperada
+        };
+    }
+
     @Override
     protected void registerStatesAndModels() {
         blockWithItem(ModBlocks.ALUMINUM_BLOCK);
@@ -29,8 +52,9 @@ public class ModBlockStateProvider extends BlockStateProvider {
         makeTomatoCrop((CropBlock) ModBlocks.TOMATO_CROP.get(), "tomato_crop_stage", "tomato_crop_stage");
         makeCornCrop(((CropBlock) ModBlocks.CORN_CROP.get()), "corn_stage_", "corn_stage_");
 
-        simpleBlockWithItem(ModBlocks.RECYCLER_STATION.get(),
+        directionalBlock(ModBlocks.RECYCLER_STATION.get(),
                 new ModelFile.UncheckedModelFile(modLoc("block/recycler_station")));
+        directionalItemModel(ModBlocks.RECYCLER_STATION);
 
     }
 
@@ -65,5 +89,11 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
     private void blockWithItem(RegistryObject<Block> blockRegistryObject) {
         simpleBlockWithItem(blockRegistryObject.get(), cubeAll(blockRegistryObject.get()));
+    }
+
+    private void directionalItemModel(RegistryObject<Block> block) {
+        String name = block.getId().getPath(); // Pega o nome registrado do bloco
+        itemModels().getBuilder(name)
+                .parent(new ModelFile.UncheckedModelFile(modLoc("block/" + name))); // Aponta para o modelo do bloco
     }
 }
