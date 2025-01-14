@@ -7,6 +7,7 @@ import net.minecraft.world.level.block.CropBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
+import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.RegistryObject;
 import net.vinithekidd.overhaulzmod.OverhaulZ;
@@ -27,6 +28,10 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
         makeTomatoCrop((CropBlock) ModBlocks.TOMATO_CROP.get(), "tomato_crop_stage", "tomato_crop_stage");
         makeCornCrop(((CropBlock) ModBlocks.CORN_CROP.get()), "corn_stage_", "corn_stage_");
+
+        simpleBlockWithItem(ModBlocks.RECYCLER_STATION.get(),
+                new ModelFile.UncheckedModelFile(modLoc("block/recycler_station")));
+
     }
 
 

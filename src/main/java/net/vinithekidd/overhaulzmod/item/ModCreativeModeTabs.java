@@ -50,6 +50,14 @@ public class ModCreativeModeTabs {
                     })
 
                     .build());
+    public static final RegistryObject<CreativeModeTab> STATIONS_TAB = CREATIVE_MODE_TABS.register("stations_tab",
+            () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModBlocks.RECYCLER_STATION.get()))
+                    .title(Component.translatable("creativetab.stations_tab"))
+                    .displayItems((pParameters, pOutput) -> {
+                        pOutput.accept(ModBlocks.RECYCLER_STATION.get());
+                    })
+
+                    .build());
 
 
     public static void register(IEventBus eventBus) {

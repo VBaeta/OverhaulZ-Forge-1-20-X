@@ -1,6 +1,7 @@
 package net.vinithekidd.overhaulzmod.block;
 
 import net.vinithekidd.overhaulzmod.block.custom.CornCropBlock;
+import net.vinithekidd.overhaulzmod.block.custom.RecyclerStationBlock;
 import net.vinithekidd.overhaulzmod.block.custom.TomatoCropBlock;
 import net.vinithekidd.overhaulzmod.item.ModItems;
 import net.minecraft.world.item.BlockItem;
@@ -29,6 +30,9 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> CORN_CROP = BLOCKS.register("corn_crop",
             () -> new CornCropBlock(BlockBehaviour.Properties.copy(Blocks.WHEAT).noOcclusion().noCollission()));
+
+    public static final RegistryObject<Block> RECYCLER_STATION = registerBlock("recycler_station",
+            () -> new RecyclerStationBlock(BlockBehaviour.Properties.copy(Blocks.CHAIN).noOcclusion()));
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);

@@ -1,6 +1,7 @@
 package net.vinithekidd.overhaulzmod;
 
 import com.mojang.logging.LogUtils;
+import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.api.distmarker.Dist;
@@ -14,11 +15,14 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.vinithekidd.overhaulzmod.block.ModBlocks;
+import net.vinithekidd.overhaulzmod.block.entity.ModBlockEntities;
 import net.vinithekidd.overhaulzmod.datagen.loot.ModLootModifiers;
 import net.vinithekidd.overhaulzmod.entity.ModEntities;
 import net.vinithekidd.overhaulzmod.entity.client.LostSurvivorRenderer;
 import net.vinithekidd.overhaulzmod.item.ModCreativeModeTabs;
 import net.vinithekidd.overhaulzmod.item.ModItems;
+import net.vinithekidd.overhaulzmod.screen.ModMenuTypes;
+import net.vinithekidd.overhaulzmod.screen.RecyclerStationScreen;
 import net.vinithekidd.overhaulzmod.sound.ModSounds;
 import org.slf4j.Logger;
 
@@ -35,7 +39,9 @@ public class OverhaulZ {
         ModCreativeModeTabs.register(modEventBus);
         ModLootModifiers.register(modEventBus);
         ModEntities.register(modEventBus);
+        ModBlockEntities.register(modEventBus);
         ModSounds.register(modEventBus);
+        ModMenuTypes.register(modEventBus);
 
 
 
@@ -66,6 +72,7 @@ public class OverhaulZ {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
             EntityRenderers.register(ModEntities.LOST_SURVIVOR.get(), LostSurvivorRenderer::new);
+            MenuScreens.register(ModMenuTypes.RECYCLER_STATION_MENU.get(), RecyclerStationScreen::new);
 
         }
     }
