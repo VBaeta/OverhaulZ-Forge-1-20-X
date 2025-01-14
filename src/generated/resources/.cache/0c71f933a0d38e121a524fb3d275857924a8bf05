@@ -1,4 +1,4 @@
-// 1.20.1	2025-01-14T05:07:04.2071622	Item Models: overhaulzmod
+// 1.20.1	2025-01-14T06:23:33.1063294	Item Models: overhaulzmod
 88204d2388b9377d28ea4b47ad607db2cb1fc514 assets/overhaulzmod/models/item/aluminum_foil.json
 496091f94569ff410eb94362099791ff313ec985 assets/overhaulzmod/models/item/aluminum_gear.json
 28214e90485c6fe7514b21fc51d5338deba6f0fe assets/overhaulzmod/models/item/aluminum_ingot.json
@@ -6,7 +6,7 @@
 4902633e0ab42340513518245c6110402956e79c assets/overhaulzmod/models/item/aluminum_tube.json
 b52cc330dc3fd1d5b70029116a2f93b46c4e1691 assets/overhaulzmod/models/item/aluminum_wiring.json
 1e2cdaaefa3d486c22d6ab9973f9186f11bdc3ad assets/overhaulzmod/models/item/bike_parts.json
-d46e13367232641b5ffefc6caaabe43e82b76f8f assets/overhaulzmod/models/item/box_container.json
+b6465a9f5cf63d8a1c5f62b9733b37012a6850f0 assets/overhaulzmod/models/item/box_container.json
 e501fa1d327e7d9ce54173259c2b9d0befd1e0fe assets/overhaulzmod/models/item/box_of_nails.json
 71a123881551f41304be1364ee86d57a00469cf9 assets/overhaulzmod/models/item/box_of_screws.json
 4ffac4ddeea5d84e2feca32dad0bee02dc7ed7df assets/overhaulzmod/models/item/can_opener.json
