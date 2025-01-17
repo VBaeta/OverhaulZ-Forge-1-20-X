@@ -1,5 +1,6 @@
 package net.vinithekidd.overhaulzmod.entity;
 
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -13,11 +14,15 @@ public class ModEntities {
     public static final DeferredRegister<EntityType<?>> ENTITY_TYPES =
             DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, OverhaulZ.MOD_ID);
 
-    public static final RegistryObject<EntityType<LostSurvivorEntity>> LOST_SURVIVOR =
-            ENTITY_TYPES.register("lost_survivor", () -> EntityType.Builder.of(LostSurvivorEntity::new, MobCategory.CREATURE)
-                    .sized(1f, 2f).build("lost_survivor"));
+    // Registro seguro da entidade LostSurvivor
+    public static final RegistryObject<EntityType<LostSurvivorEntity>> LOST_SURVIVOR = ENTITY_TYPES.register(
+            "lost_survivor", // Nome interno da entidade
+            () -> EntityType.Builder.of(LostSurvivorEntity::new, MobCategory.CREATURE)
+                    .sized(0.6F, 1.95F) // Dimensões da entidade
+                    .build(new ResourceLocation(OverhaulZ.MOD_ID, "lost_survivor").toString())
+    );
 
-
+    // Metodo para registrar o evento
     public static void register(IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);
     }

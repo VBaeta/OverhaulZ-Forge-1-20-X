@@ -25,23 +25,22 @@ public class LostSurvivorAttackGoal extends MeleeAttackGoal {
     }
 
     @Override
-    protected void checkAndPerformAttack(LivingEntity pEnemy, double pDistToEnemySqr) {
-        if (isEnemyWithinAttackDistance(pEnemy, pDistToEnemySqr)) {
-            shouldCountTillNextAttack = true;
-
-            if(isTimeToStartAttackAnimation()) {
-                entity.setAttacking(true);
+    protected void checkAndPerformAttack(LivingEntity target, double distanceToTargetSqr) {
+        if (this.isEnemyWithinAttackDistance(target, distanceToTargetSqr)) {
+            // Inicia a animação de ataque, se não estiver ativa
+            if (entity.isAttackAnimationTimeoutOver()) {
+                entity.setAttacking(true); // Ativa o estado de ataque
+                entity.resetAttackAnimationTimeout(20); // Timeout de 20 ticks (1 segundo, duração da animação)
             }
 
-            if(isTimeToAttack()) {
-                this.mob.getLookControl().setLookAt(pEnemy.getX(), pEnemy.getEyeY(), pEnemy.getZ());
-                performAttack(pEnemy);
+            // Aplica o dano no momento do impacto (após 10 ticks)
+            if (entity.getAttackAnimationTimeout() == 10) { // Após 0.5 segundos
+                this.mob.getLookControl().setLookAt(target.getX(), target.getEyeY(), target.getZ());
+                performAttack(target); // Aplica dano
             }
         } else {
-            resetAttackCooldown();
-            shouldCountTillNextAttack = false;
-            entity.setAttacking(false);
-            entity.attackAnimationTimeout = 0;
+            resetAttackCooldown(); // Reseta o cooldown se o alvo sair do alcance
+            entity.setAttacking(false); // Finaliza o estado de ataque
         }
     }
 

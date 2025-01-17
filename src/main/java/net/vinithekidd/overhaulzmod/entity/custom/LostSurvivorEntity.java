@@ -1,147 +1,94 @@
 package net.vinithekidd.overhaulzmod.entity.custom;
 
-import net.minecraft.network.syncher.EntityDataAccessor;
-import net.minecraft.network.syncher.EntityDataSerializers;
-import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.AgeableMob;
-import net.minecraft.world.entity.AnimationState;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.goal.*;
-import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.animal.Animal;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
-import net.vinithekidd.overhaulzmod.entity.ModEntities;
-import net.vinithekidd.overhaulzmod.entity.ai.LostSurvivorAttackGoal;
-import net.vinithekidd.overhaulzmod.sound.ModSounds;
 import org.jetbrains.annotations.Nullable;
+import software.bernie.geckolib.animatable.GeoEntity;
+import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
+import software.bernie.geckolib.core.animation.AnimatableManager;
+import software.bernie.geckolib.core.animation.AnimationController;
+import software.bernie.geckolib.core.animation.RawAnimation;
+import software.bernie.geckolib.util.GeckoLibUtil;
 
-public class LostSurvivorEntity extends Animal {
-    public static final EntityDataAccessor<Boolean> ATTACKING =
-            SynchedEntityData.defineId(LostSurvivorEntity.class, EntityDataSerializers.BOOLEAN);
+public class LostSurvivorEntity extends Animal implements GeoEntity {
+    private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
 
     public LostSurvivorEntity(EntityType<? extends Animal> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
     }
 
+    public static AttributeSupplier.Builder createAttributes() {
+        return Mob.createMobAttributes()
+                .add(Attributes.MAX_HEALTH, 50.0D)
+                .add(Attributes.MOVEMENT_SPEED, 0.35D);
+    }
 
+    private boolean isAttacking;
 
-    public final AnimationState idleAnimationState = new AnimationState();
-    public final AnimationState walkAnimationState = new AnimationState();
-    public final AnimationState attackAnimationState = new AnimationState();
-    public int attackAnimationTimeout = 0;
+    public boolean isAttacking() {
+        return isAttacking;
+    }
 
+    public void setAttacking(boolean attacking) {
+        this.isAttacking = attacking;
+    }
+
+    private int attackAnimationTimeout = 0;
 
     @Override
     public void tick() {
         super.tick();
 
-        if(this.level().isClientSide()) {
-            setupAnimationStates();
-        }
-    }
+        if (attackAnimationTimeout > 0) {
+            attackAnimationTimeout--;
 
-    private void setupAnimationStates() {
-        if (this.getDeltaMovement().horizontalDistanceSqr() > 1.0E-6) {
-            if (!this.walkAnimationState.isStarted()) {
-                this.walkAnimationState.start(this.tickCount);
+            if (attackAnimationTimeout == 0) {
+                this.setAttacking(false);
             }
-            this.idleAnimationState.stop();
-        } else {
-            if (!this.idleAnimationState.isStarted()) {
-                this.idleAnimationState.start(this.tickCount);
-            }
-            this.walkAnimationState.stop();
-        }
-
-        if (this.isAttacking() && attackAnimationTimeout <= 0) {
-            attackAnimationTimeout = 20; //duração da animação em ticks
-            attackAnimationState.start(this.tickCount);
-        } else {
-            --this.attackAnimationTimeout;
-        }
-
-        if(!this.isAttacking()) {
-            attackAnimationState.stop();
         }
     }
 
-    public void setAttacking(boolean attacking) {
-        this.entityData.set(ATTACKING, attacking);
+    public int getAttackAnimationTimeout() {
+        return this.attackAnimationTimeout;
     }
 
-    public boolean isAttacking() {
-        return this.entityData.get(ATTACKING);
+    public void resetAttackAnimationTimeout(int timeout) {
+        this.attackAnimationTimeout = timeout;
     }
 
-
-    @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        this.entityData.define(ATTACKING, false);
+    public boolean isAttackAnimationTimeoutOver() {
+        return attackAnimationTimeout <= 0;
     }
 
     @Override
-    protected void registerGoals() {
-        this.goalSelector.addGoal(0, new FloatGoal(this));
-
-        this.goalSelector.addGoal(0, new FloatGoal(this));
-
-        this.goalSelector.addGoal(1, new LostSurvivorAttackGoal(this, 1D, true));
-
-        this.goalSelector.addGoal(2, new FollowParentGoal(this, 1.1D));
-
-        this.goalSelector.addGoal(3, new WaterAvoidingRandomStrollGoal(this, 0.32D));
-
-        this.goalSelector.addGoal(4, new LookAtPlayerGoal(this, Player.class, 8f));
-
-        this.goalSelector.addGoal(5, new RandomLookAroundGoal(this));
-
-        this.targetSelector.addGoal(1, new HurtByTargetGoal(this));
+    public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
+        controllers.add(new AnimationController<>(this, "controller", 10, event -> {
+            if (this.isAttacking()) {
+                // Inicia a animação de ataque
+                return event.setAndContinue(RawAnimation.begin().thenPlay("animation.lost_survivor.attack"));
+            } else if (this.getDeltaMovement().horizontalDistanceSqr() > 0.01) {
+                // Move para a animação de andar, se estiver se movimentando
+                return event.setAndContinue(RawAnimation.begin().thenLoop("animation.lost_survivor.walk"));
+            } else {
+                // Volta para a animação idle, se estiver parado
+                return event.setAndContinue(RawAnimation.begin().thenLoop("animation.lost_survivor.idle"));
+            }
+        }));
     }
 
-    public static AttributeSupplier.Builder createAttributes() {
-        return Animal.createLivingAttributes()
-                .add(Attributes.MAX_HEALTH, 50.0D)
-                .add(Attributes.MOVEMENT_SPEED, 0.35D)
-                .add(Attributes.ATTACK_DAMAGE, 6.0D)
-                .add(Attributes.ATTACK_KNOCKBACK, 1.0D)
-                .add(Attributes.FOLLOW_RANGE, 24.0D);
+    @Override
+    public AnimatableInstanceCache getAnimatableInstanceCache() {
+        return this.cache;
     }
-
 
     @Override
     public @Nullable AgeableMob getBreedOffspring(ServerLevel pLevel, AgeableMob pOtherParent) {
-        return ModEntities.LOST_SURVIVOR.get().create(pLevel);
+        return null;
     }
-
-    @Override
-    public boolean isFood(ItemStack pStack) {
-        return pStack.is(Items.COOKED_CHICKEN);
-    }
-
-    @Nullable
-    @Override
-    protected SoundEvent getAmbientSound() {
-        return ModSounds.LOST_SURVIVOR_AMBIENT.get();
-    }
-
-    @Override
-    protected @Nullable SoundEvent getHurtSound(DamageSource pDamageSource) {
-        return ModSounds.LOST_SURVIVOR_HURT.get();
-    }
-
-    @Override
-    protected @Nullable SoundEvent getDeathSound() {
-        return ModSounds.LOST_SURVIVOR_DEATH.get();
-    }
-
 }

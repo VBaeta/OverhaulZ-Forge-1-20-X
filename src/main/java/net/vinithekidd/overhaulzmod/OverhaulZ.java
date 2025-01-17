@@ -26,6 +26,7 @@ import net.vinithekidd.overhaulzmod.screen.ModMenuTypes;
 import net.vinithekidd.overhaulzmod.screen.RecyclerStationScreen;
 import net.vinithekidd.overhaulzmod.sound.ModSounds;
 import org.slf4j.Logger;
+import software.bernie.geckolib.GeckoLib;
 
 @Mod(OverhaulZ.MOD_ID)
 public class OverhaulZ {
@@ -34,12 +35,13 @@ public class OverhaulZ {
 
     public OverhaulZ() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+        GeckoLib.initialize();
 
+        ModEntities.register(modEventBus);
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
         ModCreativeModeTabs.register(modEventBus);
         ModLootModifiers.register(modEventBus);
-        ModEntities.register(modEventBus);
         ModBlockEntities.register(modEventBus);
         ModSounds.register(modEventBus);
         ModMenuTypes.register(modEventBus);
