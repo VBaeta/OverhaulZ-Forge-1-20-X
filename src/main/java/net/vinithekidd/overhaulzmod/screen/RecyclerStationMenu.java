@@ -39,6 +39,10 @@ public class RecyclerStationMenu extends AbstractContainerMenu {
         addDataSlots(data);
     }
 
+    public boolean isReceivingRedstone() {
+        return blockEntity.isPowered();
+    }
+
     public boolean isCrafting() {
         return data.get(0) > 0;
     }

@@ -93,11 +93,11 @@ public class RecyclerStationBlock extends BaseEntityBlock {
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level pLevel, BlockState pState, BlockEntityType<T> pBlockEntityType) {
-        if(pLevel.isClientSide()) {
-            return null;
+        if (pLevel.isClientSide()) {
+            return null; // Ticker só é necessário no lado do servidor
         }
 
         return createTickerHelper(pBlockEntityType, ModBlockEntities.RECYCLER_STATION_BE.get(),
-                (pLevel1, pPos, pState1, pBlockEntity) -> pBlockEntity.tick(pLevel1, pPos, pState1));
+                RecyclerStationBlockEntity::tick);
     }
 }

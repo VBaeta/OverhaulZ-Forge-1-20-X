@@ -156,19 +156,26 @@ public class RecyclerStationBlockEntity extends BlockEntity implements MenuProvi
         progress = pTag.getInt("recycler_station.progress");
     }
 
-    public void tick(Level pLevel, BlockPos pPos, BlockState pState) {
-        if(hasRecipe()) {
-            increaseCraftingProgress();
-            setChanged(pLevel, pPos, pState);
-
-            if(hasProgressFinished()) {
-                craftItem();
-                resetProgress();
+    public static void tick(Level pLevel, BlockPos pPos, BlockState pState, RecyclerStationBlockEntity blockEntity) {
+        if (!pLevel.isClientSide()) { // Lógica apenas no lado do servidor
+            if (!pLevel.hasNeighborSignal(pPos)) { // Verifica se há sinal de redstone
+                blockEntity.resetProgress(); // Reseta o progresso se não houver redstone
+                return; // Encerra o metodo
             }
-        } else {
-            resetProgress();
-        }
 
+            // Verifica se há uma receita válida e processa
+            if (blockEntity.hasRecipe()) {
+                blockEntity.increaseCraftingProgress(); // Aumenta progresso
+                setChanged(pLevel, pPos, pState); // Marca o estado como alterado (sincronização com o cliente)
+
+                if (blockEntity.hasProgressFinished()) { // Se o progresso estiver concluído
+                    blockEntity.craftItem(); // Finaliza crafting e insere item no slot de saída
+                    blockEntity.resetProgress(); // Reseta o progresso
+                }
+            } else {
+                blockEntity.resetProgress(); // Reseta o progresso caso não tenha receita
+            }
+        }
     }
 
     private void resetProgress() {
@@ -231,6 +238,10 @@ public class RecyclerStationBlockEntity extends BlockEntity implements MenuProvi
         return saveWithoutMetadata();
     }
 
+    public boolean isPowered() {
+        return level.hasNeighborSignal(worldPosition);
+    }
+
     private boolean hasValidRecipeFor(ItemStack stack) {
         if (level == null || stack.isEmpty()) return false; // Verifica se o nível existe e se o item não está vazio
 
@@ -242,6 +253,4 @@ public class RecyclerStationBlockEntity extends BlockEntity implements MenuProvi
                                 recipe.getIngredients().get(0).test(stack) // Testa se o item corresponde ao ingrediente
                 );
     }
-
-
 }

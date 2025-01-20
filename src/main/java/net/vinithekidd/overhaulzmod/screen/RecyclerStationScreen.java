@@ -31,14 +31,25 @@ public class RecyclerStationScreen extends AbstractContainerScreen<RecyclerStati
         int x = (width - imageWidth) / 2;
         int y = (height - imageHeight) / 2;
 
+        // Renderiza a textura principal da interface
         guiGraphics.blit(TEXTURE, x, y, 0, 0, imageWidth, imageHeight);
 
+        // Renderiza o progresso da receita
         renderProgressArrow(guiGraphics, x, y);
+
+        // Renderiza o sinal de redstone
+        renderRedstoneSignal(guiGraphics, x, y);
     }
 
     private void renderProgressArrow(GuiGraphics guiGraphics, int x, int y) {
-        if(menu.isCrafting()) {
+        if (menu.isCrafting()) {
             guiGraphics.blit(TEXTURE, x + 85, y + 30, 176, 0, 8, menu.getScaledProgress());
+        }
+    }
+
+    private void renderRedstoneSignal(GuiGraphics guiGraphics, int x, int y) {
+        if (menu.isReceivingRedstone()) {
+            guiGraphics.blit(TEXTURE, x + 161, y + 5, 184, 0, 10, 10);
         }
     }
 
