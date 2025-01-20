@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 400,
+  "experience": 0.55,
+  "group": "aluminum",
+  "ingredient": {
+    "item": "overhaulzmod:bauxite_ore"
+  },
+  "result": "overhaulzmod:aluminum_ingot"
+}

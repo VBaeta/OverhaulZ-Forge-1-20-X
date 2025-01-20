@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "overhaulzmod:block/bauxite_ore"
+  }
+}
