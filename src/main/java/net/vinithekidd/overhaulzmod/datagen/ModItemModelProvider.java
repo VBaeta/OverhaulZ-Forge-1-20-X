@@ -19,6 +19,7 @@ public class ModItemModelProvider extends ItemModelProvider {
 
     @Override
     protected void registerModels() {
+        simpleItem(ModItems.BAUXITE_SHARD);
         simpleItem(ModItems.ALUMINUM_INGOT);
         simpleItem(ModItems.ALUMINUM_FOIL);
         simpleItem(ModItems.ALUMINUM_GEAR);

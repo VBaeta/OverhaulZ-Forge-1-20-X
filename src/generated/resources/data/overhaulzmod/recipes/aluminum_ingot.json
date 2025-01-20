@@ -1,13 +1,11 @@
 {
-  "type": "minecraft:crafting_shapeless",
+  "type": "minecraft:smelting",
   "category": "misc",
-  "ingredients": [
-    {
-      "item": "overhaulzmod:aluminum_block"
-    }
-  ],
-  "result": {
-    "count": 4,
-    "item": "overhaulzmod:aluminum_ingot"
-  }
+  "cookingtime": 400,
+  "experience": 0.55,
+  "group": "aluminum",
+  "ingredient": {
+    "item": "overhaulzmod:bauxite_ore"
+  },
+  "result": "overhaulzmod:aluminum_ingot"
 }

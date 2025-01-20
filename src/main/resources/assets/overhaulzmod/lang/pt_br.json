@@ -1,7 +1,9 @@
 {
+  "block.overhaulzmod.bauxite_ore": "Minério de Bauxita",
   "block.overhaulzmod.aluminum_block": "Bloco de Alumínio",
   "block.overhaulzmod.recycler_station": "Estação de Reciclagem",
 
+  "item.overhaulzmod.bauxite_shard": "Lasca de Bauxita",
   "item.overhaulzmod.aluminum_ingot": "Barra de Alumínio",
   "item.overhaulzmod.aluminum_foil": "Papel Alumínio",
   "item.overhaulzmod.aluminum_gear": "Engrenagem de Alumínio",

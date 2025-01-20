@@ -21,6 +21,9 @@ public class ModItems {
     public static final RegistryObject<Item> LOST_SURVIVOR_SPAWN_EGG = ITEMS.register("lost_survivor_spawn_egg",
             () -> new ForgeSpawnEggItem(ModEntities.LOST_SURVIVOR, 0x9a927f,0x354654, new Item.Properties()));
 
+    public static final RegistryObject<Item> BAUXITE_SHARD = ITEMS.register("bauxite_shard",
+            () -> new Item(new Item.Properties()));
+
     public static final RegistryObject<Item> ALUMINUM_INGOT = ITEMS.register("aluminum_ingot",
             () -> new Item(new Item.Properties()));
 

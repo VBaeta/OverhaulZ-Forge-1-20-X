@@ -1,7 +1,9 @@
 {
+  "block.overhaulzmod.bauxite_ore": "Bauxite Ore",
   "block.overhaulzmod.aluminum_block": "Aluminum Block",
   "block.overhaulzmod.recycler_station": "Recycler Station",
 
+  "item.overhaulzmod.bauxite_shard": "Bauxite Shard",
   "item.overhaulzmod.aluminum_ingot": "Aluminum Ingot",
   "item.overhaulzmod.aluminum_foil": "Aluminum Foil",
   "item.overhaulzmod.aluminum_gear": "Aluminum Gear",

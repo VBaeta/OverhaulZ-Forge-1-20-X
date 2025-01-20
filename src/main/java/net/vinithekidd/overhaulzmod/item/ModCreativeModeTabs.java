@@ -21,7 +21,9 @@ public class ModCreativeModeTabs {
                     .displayItems((pParameters, pOutput) -> {
 
                         //Aluminum Items
+                        pOutput.accept(ModBlocks.BAUXITE_ORE.get());
                         pOutput.accept(ModBlocks.ALUMINUM_BLOCK.get());
+                        pOutput.accept(ModItems.BAUXITE_SHARD.get());
                         pOutput.accept(ModItems.ALUMINUM_INGOT.get());
                         pOutput.accept(ModItems.ALUMINUM_FOIL.get());
                         pOutput.accept(ModItems.ALUMINUM_GEAR.get());

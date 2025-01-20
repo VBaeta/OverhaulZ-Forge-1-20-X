@@ -1,3 +1,4 @@
-// 1.20.1	2025-01-14T05:07:04.2061618	Tags for minecraft:block mod id overhaulzmod
-a79a33fc2fdf16b51b264890a54aea31c540c8d4 data/minecraft/tags/blocks/mineable/pickaxe.json
+// 1.20.1	2025-01-20T14:51:46.2283813	Tags for minecraft:block mod id overhaulzmod
+97b2a1bb14cca61b4244286ff582514c6ad19966 data/minecraft/tags/blocks/mineable/pickaxe.json
 a79a33fc2fdf16b51b264890a54aea31c540c8d4 data/minecraft/tags/blocks/needs_iron_tool.json
+5493d3cca7f9f4849e8f54eb9dc9de08e569b534 data/minecraft/tags/blocks/needs_stone_tool.json

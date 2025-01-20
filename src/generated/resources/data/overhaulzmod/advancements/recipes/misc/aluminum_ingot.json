@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_aluminum_block": {
+    "has_bauxite_ore": {
       "conditions": {
         "items": [
           {
             "items": [
-              "overhaulzmod:aluminum_block"
+              "overhaulzmod:bauxite_ore"
             ]
           }
         ]
@@ -22,7 +22,7 @@
   },
   "requirements": [
     [
-      "has_aluminum_block",
+      "has_bauxite_ore",
       "has_the_recipe"
     ]
   ],

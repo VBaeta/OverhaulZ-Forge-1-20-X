@@ -1,5 +1,6 @@
-// 1.20.1	2025-01-13T22:47:44.4896341	Loot Tables
+// 1.20.1	2025-01-20T14:51:46.2293816	Loot Tables
 6ba53fdf46ad3557a6d558cf657ce6a9eab0d52c data/overhaulzmod/loot_tables/blocks/aluminum_block.json
+f08005cf9376a95792a120b33deb9c63d02cda8f data/overhaulzmod/loot_tables/blocks/bauxite_ore.json
 9c4b6c55b5ee699ef82f309f5d8221606671fa89 data/overhaulzmod/loot_tables/blocks/corn_crop.json
 3fd4a5e3af5308acfd837aa3ec1bbf3007dd77b6 data/overhaulzmod/loot_tables/blocks/recycler_station.json
 91903746d612c009442423b2101ace44af23654a data/overhaulzmod/loot_tables/blocks/tomato_crop.json
