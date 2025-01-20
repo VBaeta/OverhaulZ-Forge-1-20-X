@@ -165,10 +165,13 @@
 				"head": {
 					"rotation": {
 						"0.0": {
-							"vector": [0, 0, 0]
+							"vector": [-2.5, 0, 0]
+						},
+						"2.0": {
+							"vector": [0.25, 0, 0]
 						},
 						"4.0": {
-							"vector": [0, 0, 0]
+							"vector": [-2.5, 0, 0]
 						}
 					}
 				}
@@ -213,8 +216,14 @@
 						"0.0": {
 							"vector": [0, 0, 0]
 						},
+						"0.375": {
+							"vector": [0, 0, 1]
+						},
 						"0.75": {
 							"vector": [0, 0, 0]
+						},
+						"1.125": {
+							"vector": [0, 0, -1]
 						},
 						"1.5": {
 							"vector": [0, 0, 0]
@@ -427,7 +436,7 @@
 				}
 			}
 		},
-		"animation.lost_survivor.punch": {
+		"animation.lost_survivor.attack": {
 			"animation_length": 1,
 			"bones": {
 				"upper_body": {

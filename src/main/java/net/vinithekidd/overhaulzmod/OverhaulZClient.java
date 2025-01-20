@@ -1,12 +1,10 @@
 package net.vinithekidd.overhaulzmod;
-import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.vinithekidd.overhaulzmod.entity.ModEntities;
 import net.vinithekidd.overhaulzmod.item.ModItems;
 
 @Mod.EventBusSubscriber(modid = "overhaulzmod", bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)

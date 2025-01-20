@@ -36,5 +36,10 @@
 
   "tooltip.boxcontainer.empty": "Apenas uma caixa vazia...",
   "tooltip.boxcontainer.capacity": "%d/%d",
-  "tooltip.boxcontainer.stored_item": "%s"
+  "tooltip.boxcontainer.stored_item": "%s",
+
+  "screen.overhaulzmod.attributes": "Atributos",
+  "attribute.overhaulzmod.moral": "Moral: %s",
+  "key.categories.overhaulzmod": "OverhaulZ Mod",
+  "key.overhaulzmod.open_attribute_screen": "Exibir Atributos"
 }

@@ -6,6 +6,9 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.ai.goal.FloatGoal;
+import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
+import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.Nullable;
@@ -17,68 +20,45 @@ import software.bernie.geckolib.core.animation.RawAnimation;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
 public class LostSurvivorEntity extends Animal implements GeoEntity {
+
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
 
     public LostSurvivorEntity(EntityType<? extends Animal> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
     }
 
+    // Atributos da entidade (como vida, velocidade, etc.)
     public static AttributeSupplier.Builder createAttributes() {
         return Mob.createMobAttributes()
-                .add(Attributes.MAX_HEALTH, 50.0D)
-                .add(Attributes.MOVEMENT_SPEED, 0.35D);
+                .add(Attributes.MAX_HEALTH, 20.0D) // Define a vida máxima
+                .add(Attributes.MOVEMENT_SPEED, 0.25D) // Velocidade de movimento padrão
+                .add(Attributes.FOLLOW_RANGE, 35.0D); // Distância de percepção
     }
 
-    private boolean isAttacking;
-
-    public boolean isAttacking() {
-        return isAttacking;
+    @Override
+    protected void registerGoals() {
+        // Metas básicas de movimentação e comportamento
+        this.goalSelector.addGoal(0, new FloatGoal(this)); // Permite que a entidade flutue na água
+        this.goalSelector.addGoal(1, new WaterAvoidingRandomStrollGoal(this, 1.0D)); // Caminhada aleatória por terra
+        this.goalSelector.addGoal(2, new RandomLookAroundGoal(this)); // Olhar ao redor aleatoriamente
     }
-
-    public void setAttacking(boolean attacking) {
-        this.isAttacking = attacking;
-    }
-
-    private int attackAnimationTimeout = 0;
 
     @Override
     public void tick() {
         super.tick();
-
-        if (attackAnimationTimeout > 0) {
-            attackAnimationTimeout--;
-
-            if (attackAnimationTimeout == 0) {
-                this.setAttacking(false);
-            }
-        }
-    }
-
-    public int getAttackAnimationTimeout() {
-        return this.attackAnimationTimeout;
-    }
-
-    public void resetAttackAnimationTimeout(int timeout) {
-        this.attackAnimationTimeout = timeout;
-    }
-
-    public boolean isAttackAnimationTimeoutOver() {
-        return attackAnimationTimeout <= 0;
+        // A lógica de ataque foi removida, logo nada relacionado a ataques será processado aqui
     }
 
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
         controllers.add(new AnimationController<>(this, "controller", 10, event -> {
-            if (this.isAttacking()) {
-                // Inicia a animação de ataque
-                return event.setAndContinue(RawAnimation.begin().thenPlay("animation.lost_survivor.attack"));
-            } else if (this.getDeltaMovement().horizontalDistanceSqr() > 0.01) {
-                // Move para a animação de andar, se estiver se movimentando
+            // Animação de movimento
+            if (this.getDeltaMovement().horizontalDistanceSqr() > 0.0001D) {
                 return event.setAndContinue(RawAnimation.begin().thenLoop("animation.lost_survivor.walk"));
-            } else {
-                // Volta para a animação idle, se estiver parado
-                return event.setAndContinue(RawAnimation.begin().thenLoop("animation.lost_survivor.idle"));
             }
+
+            // Animação de idle (parado)
+            return event.setAndContinue(RawAnimation.begin().thenLoop("animation.lost_survivor.idle"));
         }));
     }
 
@@ -89,6 +69,6 @@ public class LostSurvivorEntity extends Animal implements GeoEntity {
 
     @Override
     public @Nullable AgeableMob getBreedOffspring(ServerLevel pLevel, AgeableMob pOtherParent) {
-        return null;
+        return null; // Essa entidade não é reprodutível
     }
 }

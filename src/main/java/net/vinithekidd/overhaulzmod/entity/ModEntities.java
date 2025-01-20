@@ -18,7 +18,7 @@ public class ModEntities {
     public static final RegistryObject<EntityType<LostSurvivorEntity>> LOST_SURVIVOR = ENTITY_TYPES.register(
             "lost_survivor", // Nome interno da entidade
             () -> EntityType.Builder.of(LostSurvivorEntity::new, MobCategory.CREATURE)
-                    .sized(0.6F, 1.95F) // Dimensões da entidade
+                    .sized(0.6F, 1.8F) // Dimensões da entidade
                     .build(new ResourceLocation(OverhaulZ.MOD_ID, "lost_survivor").toString())
     );
 
