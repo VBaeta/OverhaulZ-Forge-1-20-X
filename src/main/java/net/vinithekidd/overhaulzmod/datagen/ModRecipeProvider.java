@@ -27,6 +27,16 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         oreSmelting(pWriter, BAUXITE_SMELTABLES, RecipeCategory.MISC, ModItems.ALUMINUM_INGOT.get(), 0.55f, 400, "aluminum");
         oreBlasting(pWriter, BAUXITE_SMELTABLES, RecipeCategory.MISC, ModItems.ALUMINUM_INGOT.get(), 0.65f, 200, "aluminum");
 
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.ALUMINUM_GEAR.get())
+                .pattern(" I ")
+                .pattern("IBI")
+                .pattern(" I ")
+                .define('B', ModBlocks.ALUMINUM_BLOCK.get())
+                .define('I', ModItems.ALUMINUM_INGOT.get())
+                .unlockedBy(getHasName(ModItems.ALUMINUM_INGOT.get()), has(ModItems.ALUMINUM_INGOT.get()))
+                .save(pWriter);
+
+
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.ALUMINUM_BLOCK.get())
                 .pattern("AA")
                 .pattern("AA")

@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "item": "overhaulzmod:aluminum_block"
+    },
+    "I": {
+      "item": "overhaulzmod:aluminum_ingot"
+    }
+  },
+  "pattern": [
+    " I ",
+    "IBI",
+    " I "
+  ],
+  "result": {
+    "item": "overhaulzmod:aluminum_gear"
+  },
+  "show_notification": true
+}
