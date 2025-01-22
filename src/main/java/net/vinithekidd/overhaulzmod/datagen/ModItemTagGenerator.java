@@ -22,5 +22,9 @@ public class ModItemTagGenerator extends ItemTagsProvider {
         tag(ModTags.Items.TINY_MATERIALS)
                 .add(ModItems.NAILS.get())
                 .add(ModItems.SCREWS.get());
+
+        tag(ModTags.Items.CASTS)
+                .add(ModItems.GEAR_CAST.get());
     }
+
 }

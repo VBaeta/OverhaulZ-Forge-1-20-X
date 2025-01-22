@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "D": {
+      "item": "minecraft:dirt"
+    },
+    "I": {
+      "item": "overhaulzmod:cast_iron_ingot"
+    }
+  },
+  "pattern": [
+    "IDI",
+    "DID",
+    "IDI"
+  ],
+  "result": {
+    "item": "overhaulzmod:gear_cast"
+  },
+  "show_notification": true
+}

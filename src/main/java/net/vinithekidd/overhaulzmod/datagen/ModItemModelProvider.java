@@ -35,6 +35,14 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(ModItems.NAILS);
         simpleItem(ModItems.SCREWS);
         simpleItem(ModItems.RUSTY_CAN);
+        simpleItem(ModItems.CAST_IRON_INGOT);
+        simpleItem(ModItems.GEAR_CAST);
+        simpleItem(ModItems.GLUE);
+        simpleItem(ModItems.BLACK_MARKER);
+        simpleItem(ModItems.BLUE_MARKER);
+        simpleItem(ModItems.RED_MARKER);
+        simpleItem(ModItems.GREEN_MARKER);
+        simpleItem(ModItems.YELLOW_MARKER);
         simpleItem(ModItems.TOMATO);
         simpleItem(ModItems.TOMATO_SEEDS);
         simpleItem(ModItems.CORN);

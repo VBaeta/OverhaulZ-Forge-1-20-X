@@ -2,10 +2,12 @@ package net.vinithekidd.overhaulzmod.datagen;
 
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.AbstractCookingRecipe;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
 import net.vinithekidd.overhaulzmod.OverhaulZ;
 import net.vinithekidd.overhaulzmod.block.ModBlocks;
@@ -24,18 +26,32 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
     @Override
     protected void buildRecipes(Consumer<FinishedRecipe> pWriter) {
-        oreSmelting(pWriter, BAUXITE_SMELTABLES, RecipeCategory.MISC, ModItems.ALUMINUM_INGOT.get(), 0.55f, 400, "aluminum");
-        oreBlasting(pWriter, BAUXITE_SMELTABLES, RecipeCategory.MISC, ModItems.ALUMINUM_INGOT.get(), 0.65f, 200, "aluminum");
+        //BAUXITE SMELTABLES
+        oreSmelting(pWriter, BAUXITE_SMELTABLES, RecipeCategory.MISC, ModItems.ALUMINUM_INGOT.get(),
+                0.55f, 400, "aluminum");
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.ALUMINUM_GEAR.get())
-                .pattern(" I ")
-                .pattern("IBI")
-                .pattern(" I ")
-                .define('B', ModBlocks.ALUMINUM_BLOCK.get())
-                .define('I', ModItems.ALUMINUM_INGOT.get())
-                .unlockedBy(getHasName(ModItems.ALUMINUM_INGOT.get()), has(ModItems.ALUMINUM_INGOT.get()))
+        oreBlasting(pWriter, BAUXITE_SMELTABLES, RecipeCategory.MISC, ModItems.ALUMINUM_INGOT.get(),
+                0.65f, 200, "aluminum");
+
+
+        //CAST IRON
+        oreSmelting(
+                pWriter, List.of(Items.IRON_INGOT), RecipeCategory.MISC, ModItems.CAST_IRON_INGOT.get(),
+                1f, 800, "cast_iron_ingot");
+
+        oreBlasting(pWriter, List.of(Items.IRON_INGOT), RecipeCategory.MISC, ModItems.CAST_IRON_INGOT.get(),
+                1.5f, 600, "cast_iron_ingot");
+
+
+        //CRAFTING TABLE RECIPES
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.GEAR_CAST.get())
+                .pattern("IDI")
+                .pattern("DID")
+                .pattern("IDI")
+                .define('D', Blocks.DIRT)
+                .define('I', ModItems.CAST_IRON_INGOT.get())
+                .unlockedBy(getHasName(ModItems.CAST_IRON_INGOT.get()), has(ModItems.CAST_IRON_INGOT.get()))
                 .save(pWriter);
-
 
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.ALUMINUM_BLOCK.get())
                 .pattern("AA")
@@ -49,6 +65,8 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy(getHasName(ModBlocks.ALUMINUM_BLOCK.get()), has(ModBlocks.ALUMINUM_BLOCK.get()))
                 .save(pWriter);
     }
+
+
 
     protected static void oreSmelting(Consumer<FinishedRecipe> pFinishedRecipeConsumer, List<ItemLike> pIngredients, RecipeCategory pCategory, ItemLike pResult, float pExperience, int pCookingTIme, String pGroup) {
         oreCooking(pFinishedRecipeConsumer, RecipeSerializer.SMELTING_RECIPE, pIngredients, pCategory, pResult, pExperience, pCookingTIme, pGroup, "_from_smelting");

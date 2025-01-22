@@ -13,6 +13,7 @@ public class ModTags {
     public static class Items {
 
         public static final TagKey<Item> TINY_MATERIALS = tag("tiny_materials");
+        public static final TagKey<Item> CASTS = tag("casts");
 
 
         private static TagKey<Item> tag(String name) {

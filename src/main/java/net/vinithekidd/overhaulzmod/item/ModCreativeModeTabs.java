@@ -22,8 +22,8 @@ public class ModCreativeModeTabs {
 
                         //Aluminum Items
                         pOutput.accept(ModBlocks.BAUXITE_ORE.get());
-                        pOutput.accept(ModBlocks.ALUMINUM_BLOCK.get());
                         pOutput.accept(ModItems.BAUXITE_SHARD.get());
+                        pOutput.accept(ModBlocks.ALUMINUM_BLOCK.get());
                         pOutput.accept(ModItems.ALUMINUM_INGOT.get());
                         pOutput.accept(ModItems.ALUMINUM_FOIL.get());
                         pOutput.accept(ModItems.ALUMINUM_GEAR.get());
@@ -37,6 +37,19 @@ public class ModCreativeModeTabs {
                         pOutput.accept(ModItems.STAPLER.get());
                         pOutput.accept(ModItems.CAN_OPENER.get());
                         pOutput.accept(ModItems.RUSTY_CAN.get());
+
+                        pOutput.accept(ModItems.GLUE.get());
+
+                        pOutput.accept(ModItems.BLACK_MARKER.get());
+                        pOutput.accept(ModItems.BLUE_MARKER.get());
+                        pOutput.accept(ModItems.RED_MARKER.get());
+                        pOutput.accept(ModItems.YELLOW_MARKER.get());
+                        pOutput.accept(ModItems.GREEN_MARKER.get());
+
+                        pOutput.accept(ModItems.CAST_IRON_INGOT.get());
+
+                        //Casts
+                        pOutput.accept(ModItems.GEAR_CAST.get());
 
                         //Materials and Containers
                         pOutput.accept(ModItems.NAILS.get());

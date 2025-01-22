@@ -69,6 +69,31 @@ public class ModItems {
     public static final RegistryObject<Item> RUSTY_CAN = ITEMS.register("rusty_can",
             () -> new Item(new Item.Properties()));
 
+    public static final RegistryObject<Item> CAST_IRON_INGOT = ITEMS.register("cast_iron_ingot",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> GEAR_CAST = ITEMS.register("gear_cast",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> GLUE = ITEMS.register("glue",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> BLACK_MARKER = ITEMS.register("black_marker",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> BLUE_MARKER = ITEMS.register("blue_marker",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> RED_MARKER = ITEMS.register("red_marker",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> YELLOW_MARKER = ITEMS.register("yellow_marker",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> GREEN_MARKER = ITEMS.register("green_marker",
+            () -> new Item(new Item.Properties()));
+
+
     public static final RegistryObject<Item> TOMATO = ITEMS.register("tomato",
             () -> new Item(new Item.Properties().food(ModFoods.TOMATO)));
 

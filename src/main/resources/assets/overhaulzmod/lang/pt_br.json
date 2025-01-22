@@ -4,7 +4,7 @@
   "block.overhaulzmod.recycler_station": "Estação de Reciclagem",
 
   "item.overhaulzmod.bauxite_shard": "Lasca de Bauxita",
-  "item.overhaulzmod.aluminum_ingot": "Barra de Alumínio",
+  "item.overhaulzmod.aluminum_ingot": "Lingote de Alumínio",
   "item.overhaulzmod.aluminum_foil": "Papel Alumínio",
   "item.overhaulzmod.aluminum_gear": "Engrenagem de Alumínio",
   "item.overhaulzmod.aluminum_scraps": "Restos de Alumínio",
@@ -17,6 +17,9 @@
   "item.overhaulzmod.ruler": "Régua",
   "item.overhaulzmod.stapler": "Grampeador",
   "item.overhaulzmod.can_opener": "Abridor de Lata",
+
+  "item.overhaulzmod.cast_iron_ingot": "Lingote de Ferro Fundido",
+  "item.overhaulzmod.gear_cast": "Molde de Engrenagem",
 
   "item.overhaulzmod.nails": "Pregos",
   "item.overhaulzmod.screws": "Parafusos",
